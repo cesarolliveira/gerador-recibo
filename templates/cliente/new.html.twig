@@ -1,0 +1,21 @@
+{% extends "system/base.html.twig" %}
+
+{% block head %}
+	{{ parent() }}
+{% endblock %}
+
+{% block title %}
+	Cadastrar Cliente
+{% endblock %}
+
+{% block content %}
+
+	<a class="btn btn-info form-control mb-3" href="{{ path('index') }}">Voltar</a>
+
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+	{{ form_end(form) }}
+
+{% endblock %}
+
+{% block script %}{% endblock %}

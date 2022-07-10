@@ -1,0 +1,149 @@
+{% extends "system/base.html.twig" %}
+
+{% block head %}
+	{{ parent() }}
+{% endblock %}
+
+{% block title %}
+	Faturas -
+	{{ cliente.nome }}
+{% endblock %}
+
+{% block content %}
+
+	<a class="btn btn-info form-control mb-5 d-print-none" href="{{ path('index') }}">Voltar</a>
+
+	{% for fatura in faturas %}
+		<section class="boleto mb-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2 p-1 border border-top-0 border-primary text-center">
+						<img class="img-fluid" src="https://gerenciador.aequilibrio.com.br/modulo/boleto/layout-fatura/img/sicredi.svg">
+					</div>
+					<div class="col-sm-8 border border-top-0 border-start-0 border-end-0 border-primary">
+						<span class="d-block font-14">
+							INTERMEDIADO POR
+						</span>
+						<span class="form-text d-block mt-0">
+							<strong>COODIFICA</strong>
+							- 34.544.005/0001-05
+						</span>
+					</div>
+					<div class="col-sm-2 p-1 border border-top-0 border-end-0 border-start-0 border-primary">
+						<img class="img-fluid" src="https://gerenciador.aequilibrio.com.br/modulo/boleto/layout-fatura/img/sicredi.svg">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-9 col-lg-9 col-xs-12 border border-top-0 border-end-0 border-primary">
+						<span class="d-block">
+							LOCAL DE PAGAMENTO
+						</span>
+						<span class="form-text d-block mt-0">
+							Pagamento deve ser realizado na escola de Idiomas.
+						</span>
+					</div>
+					<div class="col-sm-3 col-lg-3 col-xs-12 border border-top-0 border-primary">
+						<span class="d-block">
+							PARCELA
+						</span>
+						<span class="form-text d-block mt-0">
+							{{ fatura.parcela }}
+						</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-9 col-lg-9 col-xs-12">
+						<div class="row">
+							<div class="col-sm-6 col-lg-6 col-xs-12 border border-top-0 border-primary">
+								<span class="d-block">
+									BENEFICIÁRIO FINAL
+								</span>
+								<span class="form-text d-block mt-0">
+									Escola de Idiomas
+								</span>
+								<span class="form-text d-block mt-0">
+									<strong>CPF/CNPJ:
+									</strong>
+									34.544.005/0001-05
+								</span>
+							</div>
+							<div class="col-sm-6 col-lg-6 col-xs-12 border border-start-0 border-end-0 border-top-0 border-primary">
+								<span class="d-block">
+									PAGADOR
+								</span>
+								<span class="form-text d-block mt-0">
+									{{ fatura.recibo.cliente.nome }}
+								</span>
+								<span class="form-text d-block mt-0">
+									<strong>CPF/CNPJ:
+									</strong>
+									{{ fatura.recibo.cliente.documento }}
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3 col-lg-3 col-xs-12">
+						<div class="row">
+							<div class="col-sm-12 col-lg-12 col-xs-12 border border-top-0 border-primary">
+								<span class="d-block">
+									VENCIMENTO
+								</span>
+								<span class="form-text d-block mt-0">
+									{{ fatura.vencimento|date("d/m/Y") }}
+								</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-12 col-xs-12 border border-top-0 border-primary">
+								<span class="d-block">
+									VALOR
+								</span>
+								<span class="form-text d-block mt-0">
+									R$
+									{{ fatura.valor }}
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-9 col-lg-9 col-xs-12 border border-top-0 border-end-0 border-primary">
+						<span class="d-block">
+							INSTRUÇÕES
+						</span>
+						<span class="form-text d-block mt-0"></span>
+					</div>
+					<div class="col-sm-3 col-lg-3 col-xs-12">
+						<div class="row">
+							<div class="col-sm-12 col-lg-12 col-xs-12 border border-top-0 border-primary">
+								<span class="d-block">
+									MULTA / JUROS
+								</span>
+								<span class="form-text d-block mt-0">
+									R$ 0,00
+								</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-12 col-xs-12 border border-top-0 border-primary">
+								<span class="d-block">
+									VALOR
+								</span>
+								<span class="form-text d-block mt-0">
+									R$
+									{{ fatura.valor }}
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% if loop.index is divisible by(2) %}
+				<span style="page-break-before: always;"></span>
+			{% endif %}
+		</section>
+	{% endfor %}
+
+{% endblock %}
+
+{% block script %}{% endblock %}

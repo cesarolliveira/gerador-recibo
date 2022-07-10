@@ -5,3 +5,19 @@ controllers:
 kernel:
     resource: ../src/Kernel.php
     type: annotation
+
+index:
+    path: /
+    controller: App\Controller\HomeController::indexAction
+
+cliente_new:
+    path: /cliente/cadastrar
+    controller: App\Controller\ClienteController::newAction
+
+carne_new:
+    path: /carne/cadastrar
+    controller: App\Controller\ReciboController::newAction
+
+imprimir_search:
+    path: /carne/buscar-cliente
+    controller: App\Controller\ReciboController::imprimirAction

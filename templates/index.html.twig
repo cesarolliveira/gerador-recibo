@@ -1,0 +1,29 @@
+{% extends "system/base.html.twig" %}
+
+{% block head %}
+	{{ parent() }}
+{% endblock %}
+
+{% block title %}
+	Home
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<a class="btn btn-info" href="{{ path('cliente_new') }}">Cadastrar Cliente</a>
+	</div>
+
+	<br/>
+
+	<div class="row">
+		<a class="btn btn-info" href="{{ path('carne_new') }}">Criar Carne</a>
+	</div>
+
+	<br/>
+
+	<div class="row">
+		<a class="btn btn-info" href="{{ path('imprimir_search') }}">Imprimir Carne</a>
+	</div>
+{% endblock %}
+
+{% block script %}{% endblock %}
